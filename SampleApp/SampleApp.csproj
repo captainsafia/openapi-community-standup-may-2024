@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.0-preview.5.24272.3" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0-preview.5.24259.9" />
     <PackageReference Include="Microsoft.Extensions.ApiDescription.Server" Version="9.0.0-preview.5.24259.9">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Scalar.AspNetCore" Version="1.1.1" />
   </ItemGroup>
 
 </Project>
