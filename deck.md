@@ -140,6 +140,22 @@ ShouldInclude = (description) => description.GroupName == null || description.Gr
 
 ---
 
+## What versions of the OpenAPI spec are supported?
+
+- OpenApi v2 (aka Swagger)
+- OpenApi v3
+
+---
+
+## What about Microsoft.AspNetCore.OpenAPI < v8.0?
+
+```csharp
+app.MapGet("/", () => "Hello world!")
+    .WithOpenApi();
+```
+
+---
+
 ## Architecture Overview 
 
 --- 
@@ -174,6 +190,7 @@ ShouldInclude = (description) => description.GroupName == null || description.Gr
 
 ## Future
 
+- Schemas refs support
 - Schema transformers support
 - XML doc comment support
 - Ecosystem integrations (`Asp.Versioning`)
