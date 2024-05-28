@@ -1,4 +1,4 @@
-#define BASIC
+#define FORMS
 
 #region BASIC
 #if BASIC
@@ -180,7 +180,6 @@ app.Run();
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-;
 
 var builder = WebApplication.CreateBuilder(args);
 
