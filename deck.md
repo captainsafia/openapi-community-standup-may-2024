@@ -180,10 +180,6 @@ app.MapGet("/", () => "Hello world!")
 
 ---
 
-## Recursive types
-
----
-
 ## Polymorphic types
 
 ---
