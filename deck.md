@@ -12,9 +12,9 @@ marp: true
 
 - What is it?
 - Configuration and customization
-- All about schemas
 - Integration with 3rd party tools
 - Implementation overview
+- All about schemas
 - Next steps
 
 ---
@@ -23,13 +23,14 @@ marp: true
 
 - No client/server code generation
 - No OpenAPI UI in-framework
-- No OpenAPI-based 
+- No OpenAPI-based spec testing
 
 ## What we _do_ do
 
 - Code-first OpenAPI documentation generation
     - For both minimal and controller-based APIs
-
+    - With support for certain customizations
+    - And Native AoT (for minimal APIs)
 ---
 
 ## Getting started
@@ -72,15 +73,15 @@ $ dotnet add package Microsoft.Extensions.ApiDescription.Server --prerelease
 
 ---
 
+## What about UI?
+
+---
+
+![logos for uis](./screenshots/ui-logos.png)
+
+---
+
 ## Managing multiple docs in the same app
-
----
-
-![multidoc internal doc](./screenshots/multidoc-internal.png)
-
----
-
-![multidoc public doc](./screenshots/multidoc-public.png)
 
 ---
 
@@ -92,10 +93,91 @@ ShouldInclude = (description) => description.GroupName == null || description.Gr
 
 ---
 
-## Let's talk about JSON Schema
+**Microsoft.AspNetCore.Mvc.ApiExplorer.ApiDescription**
+- Access to endpoint metadata
+- Access to `MethodInfo` associated with handlers
+- Access to route values/parameters
+
+---
+
+## Transformers for customizations
+
+- Document transformers
+- Operation transformers
+- Run in FIFO order of registration
+
+---
+
+## Fundamental transformer function
+
+(OpenApiDocument, OpenApiDocumentTransformerContext, CancellationToken) => Task
+(OpenApiOperation, OpenApiOperationTransformerContext, CancellationToken) => Task
+
+---
+
+## OpenApiDocument/OpenApiOperation
+
+- Types from Microsoft.OpenApi library
+- Mutable
+
+---
+
+## OpenApiDocumentTransformerContext/OpenApiOperationTransformerContext
+
+- DocumentName
+- IReadOnlyList<ApiDescriptionGroup>/ApiDescription
+- IServiceProvider
+
+---
+
+## Transformer registration APIs
+
+- Transformers are registered on `OpenApiOptions` associated with each document
+- Registration APIs
+    - Instance-based (document transformers only)
+    - Delegate-based (document and operation transformers)
+    - Activated (document transformers only)
 
 ---
 
 ## Architecture Overview 
 
 --- 
+
+## Let's talk about JSON Schema
+
+- OpenAPI schema vs. JSON schema
+- JSON schema support coming to System.Text.Json
+- System.Text.Json -> JsonObject -> OpenApiJsonSchema -> OpenApiSchema
+
+---
+
+## Route constraints + validation attributes
+
+---
+
+## Enums
+
+---
+
+## Forms
+
+---
+
+## Recursive types
+
+---
+
+## Polymorphic types
+
+---
+
+## Future
+
+- Schema transformers support
+- XML doc comment support
+- Ecosystem integrations (`Asp.Versioning`)
+- Evolving with OpenAPI (v4)
+- Improving build-time generation experience
+
+---
